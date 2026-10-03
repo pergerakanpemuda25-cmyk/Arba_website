@@ -3,145 +3,943 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>Organisasi Pemuda ARBA</title>
+<meta name="theme-color" content="#315d7d">
+<meta name="description" content="Website resmi Pemuda Pergerakan ARBA - Kp. Balemoyan, Desa Sukamurni, RW 08.">
+<title>Pemuda Pergerakan ARBA</title>
 
 <style>
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@600;700;800&display=swap');
+
+:root{
+  --blue:#315d7d;
+  --blue-dark:#203f58;
+  --blue-soft:#edf4f8;
+  --blue-light:#7fa8c9;
+  --yellow:#f2c95c;
+  --white:#fff;
+  --text:#243746;
+  --muted:#71808c;
+  --line:#dce5eb;
+  --bg:#f7fafc;
+  --shadow:0 20px 55px rgba(31,63,88,.10);
+  --radius:22px;
+}
+
 *{
   margin:0;
   padding:0;
   box-sizing:border-box;
-  font-family:Arial,sans-serif;
+}
+
+html{
+  scroll-behavior:smooth;
 }
 
 body{
-  background:#f5f7f9;
-  color:#222;
+  font-family:"DM Sans",sans-serif;
+  color:var(--text);
+  background:var(--bg);
+  line-height:1.7;
 }
+
+a{
+  color:inherit;
+  text-decoration:none;
+}
+
+.container{
+  width:min(1160px,92%);
+  margin:auto;
+}
+
+/* HEADER */
 
 header{
-  background:#0b6b43;
-  color:white;
-  padding:18px 7%;
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  position:sticky;
+  position:fixed;
   top:0;
-  z-index:10;
+  left:0;
+  width:100%;
+  z-index:1000;
+  transition:.3s;
 }
 
-.logo{
-  font-size:22px;
-  font-weight:bold;
+header.scrolled{
+  background:rgba(255,255,255,.96);
+  box-shadow:0 8px 30px rgba(31,63,88,.08);
+  backdrop-filter:blur(15px);
 }
 
-nav a{
-  color:white;
-  text-decoration:none;
-  margin-left:20px;
-  font-size:14px;
+.navbar{
+  height:82px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
 }
+
+.brand{
+  font-family:"Manrope",sans-serif;
+  font-size:25px;
+  font-weight:800;
+  letter-spacing:-1px;
+}
+
+.brand span{
+  color:var(--blue);
+}
+
+.brand small{
+  display:block;
+  font-family:"DM Sans",sans-serif;
+  font-size:9px;
+  letter-spacing:2px;
+  font-weight:600;
+  color:var(--muted);
+  margin-top:-5px;
+}
+
+.nav-links{
+  display:flex;
+  gap:27px;
+  align-items:center;
+}
+
+.nav-links a{
+  font-size:13px;
+  font-weight:600;
+  color:#526573;
+  transition:.2s;
+}
+
+.nav-links a:hover{
+  color:var(--blue);
+}
+
+.nav-button{
+  padding:11px 18px;
+  border:1px solid var(--blue);
+  border-radius:8px;
+  color:var(--blue)!important;
+}
+
+.menu{
+  display:none;
+  font-size:25px;
+  cursor:pointer;
+}
+
+/* HERO */
 
 .hero{
-  min-height:520px;
-  background:linear-gradient(rgba(0,80,45,.75),rgba(0,80,45,.75)),
-  url("https://images.unsplash.com/photo-1529156069898-49953e39b3ac?auto=format&fit=crop&w=1600&q=80");
-  background-size:cover;
-  background-position:center;
+  min-height:100vh;
+  padding-top:82px;
   display:flex;
   align-items:center;
-  justify-content:center;
-  text-align:center;
-  color:white;
-  padding:30px;
+  position:relative;
+  overflow:hidden;
+  background:
+    radial-gradient(circle at 80% 25%,rgba(127,168,201,.25),transparent 32%),
+    linear-gradient(135deg,#f7fafc 0%,#edf5f9 100%);
+}
+
+.hero:after{
+  content:"";
+  position:absolute;
+  width:420px;
+  height:420px;
+  border:1px solid rgba(49,93,125,.12);
+  border-radius:50%;
+  right:-160px;
+  bottom:-160px;
+}
+
+.hero-grid{
+  display:grid;
+  grid-template-columns:1.1fr .9fr;
+  gap:70px;
+  align-items:center;
+}
+
+.eyebrow{
+  color:var(--blue);
+  font-size:12px;
+  font-weight:700;
+  letter-spacing:3px;
+  text-transform:uppercase;
+  margin-bottom:18px;
 }
 
 .hero h1{
-  font-size:48px;
-  margin-bottom:15px;
+  font-family:"Manrope",sans-serif;
+  font-size:clamp(42px,6vw,76px);
+  line-height:1.03;
+  letter-spacing:-3px;
+  color:var(--blue-dark);
+  margin-bottom:25px;
+}
+
+.hero h1 span{
+  color:var(--blue);
 }
 
 .hero p{
-  font-size:18px;
-  max-width:650px;
-  margin:auto;
-  line-height:1.6;
+  max-width:570px;
+  font-size:17px;
+  color:var(--muted);
+  margin-bottom:34px;
 }
 
-.tombol{
-  display:inline-block;
-  margin-top:25px;
+.hero-buttons{
+  display:flex;
+  gap:13px;
+  flex-wrap:wrap;
+}
+
+.btn{
+  display:inline-flex;
+  justify-content:center;
+  align-items:center;
+  padding:14px 23px;
+  border-radius:9px;
+  font-size:13px;
+  font-weight:700;
+  transition:.25s;
+  cursor:pointer;
+  border:none;
+}
+
+.btn-primary{
+  background:var(--blue);
+  color:white;
+}
+
+.btn-primary:hover{
+  background:var(--blue-dark);
+  transform:translateY(-2px);
+}
+
+.btn-outline{
+  border:1px solid var(--line);
   background:white;
-  color:#0b6b43;
-  padding:13px 25px;
-  border-radius:8px;
-  text-decoration:none;
-  font-weight:bold;
+  color:var(--blue);
 }
 
-section{
-  padding:60px 7%;
+.btn-outline:hover{
+  border-color:var(--blue);
 }
 
-.judul{
-  text-align:center;
-  color:#0b6b43;
-  margin-bottom:35px;
-  font-size:30px;
+.hero-panel{
+  position:relative;
 }
 
-.tentang{
-  max-width:850px;
-  margin:auto;
-  text-align:center;
-  line-height:1.8;
+.hero-card{
+  background:white;
+  border-radius:28px;
+  padding:42px;
+  box-shadow:var(--shadow);
+  position:relative;
+  overflow:hidden;
 }
 
-.cards{
+.hero-card:before{
+  content:"ARBA";
+  position:absolute;
+  right:-15px;
+  bottom:-35px;
+  font-family:"Manrope";
+  font-size:120px;
+  font-weight:800;
+  color:rgba(49,93,125,.045);
+}
+
+.hero-card-title{
+  color:var(--muted);
+  font-size:11px;
+  letter-spacing:2px;
+  text-transform:uppercase;
+  font-weight:700;
+}
+
+.hero-card h2{
+  font-family:"Manrope";
+  color:var(--blue-dark);
+  font-size:35px;
+  margin:9px 0 25px;
+}
+
+.stat-row{
   display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  grid-template-columns:1fr 1fr;
+  border-top:1px solid var(--line);
+  padding-top:22px;
   gap:20px;
 }
 
-.card{
-  background:white;
-  padding:30px;
-  border-radius:12px;
-  box-shadow:0 3px 15px rgba(0,0,0,.08);
-  text-align:center;
+.stat strong{
+  display:block;
+  font-family:"Manrope";
+  font-size:34px;
+  color:var(--blue);
 }
 
-.card h3{
-  color:#0b6b43;
+.stat span{
+  font-size:12px;
+  color:var(--muted);
+}
+
+/* GENERAL */
+
+section{
+  padding:100px 0;
+}
+
+.section-head{
+  max-width:680px;
+  margin-bottom:45px;
+}
+
+.section-label{
+  color:var(--blue);
+  font-size:11px;
+  letter-spacing:3px;
+  text-transform:uppercase;
+  font-weight:700;
+  margin-bottom:10px;
+}
+
+.section-title{
+  font-family:"Manrope";
+  color:var(--blue-dark);
+  font-size:clamp(30px,4vw,45px);
+  line-height:1.15;
+  letter-spacing:-1.5px;
+}
+
+.section-desc{
+  color:var(--muted);
+  margin-top:15px;
+}
+
+/* ABOUT */
+
+.about-grid{
+  display:grid;
+  grid-template-columns:.9fr 1.1fr;
+  gap:70px;
+  align-items:start;
+}
+
+.about-box{
+  background:var(--blue);
+  color:white;
+  padding:38px;
+  border-radius:var(--radius);
+  min-height:310px;
+  position:relative;
+  overflow:hidden;
+}
+
+.about-box:after{
+  content:"";
+  position:absolute;
+  width:190px;
+  height:190px;
+  border:1px solid rgba(255,255,255,.15);
+  border-radius:50%;
+  right:-80px;
+  bottom:-70px;
+}
+
+.about-box h3{
+  font-family:"Manrope";
+  font-size:28px;
+  margin-bottom:15px;
+}
+
+.about-box p{
+  color:rgba(255,255,255,.78);
+  font-size:14px;
+}
+
+.about-text p{
+  color:var(--muted);
+  margin-bottom:20px;
+}
+
+.about-details{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:18px;
+  margin-top:30px;
+}
+
+.detail{
+  border-top:1px solid var(--line);
+  padding-top:14px;
+}
+
+.detail strong{
+  display:block;
+  font-size:12px;
+  color:var(--blue);
+  margin-bottom:3px;
+}
+
+.detail span{
+  font-size:13px;
+  color:var(--muted);
+}
+
+/* VISI MISI */
+
+.blue-section{
+  background:#eef5f9;
+}
+
+.vm-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:24px;
+}
+
+.vm-card{
+  background:white;
+  padding:35px;
+  border:1px solid var(--line);
+  border-radius:var(--radius);
+}
+
+.vm-card h3{
+  font-family:"Manrope";
+  color:var(--blue);
+  font-size:24px;
+  margin-bottom:14px;
+}
+
+.vm-card p,
+.vm-card li{
+  color:var(--muted);
+  font-size:14px;
+}
+
+.vm-card ol{
+  padding-left:20px;
+}
+
+.vm-card li{
+  margin-bottom:9px;
+}
+
+/* PROGRAM */
+
+.program-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:20px;
+}
+
+.program-card{
+  background:white;
+  border:1px solid var(--line);
+  border-radius:var(--radius);
+  padding:30px;
+  transition:.3s;
+}
+
+.program-card:hover{
+  transform:translateY(-6px);
+  box-shadow:var(--shadow);
+  border-color:rgba(49,93,125,.25);
+}
+
+.program-number{
+  font-family:"Manrope";
+  font-size:12px;
+  color:var(--yellow);
+  letter-spacing:2px;
+  font-weight:800;
+}
+
+.program-card h3{
+  font-family:"Manrope";
+  font-size:20px;
+  color:var(--blue-dark);
+  margin:12px 0;
+}
+
+.program-card p{
+  color:var(--muted);
+  font-size:13px;
+}
+
+/* TIMELINE */
+
+.timeline{
+  position:relative;
+  margin-top:30px;
+}
+
+.timeline:before{
+  content:"";
+  position:absolute;
+  left:9px;
+  top:0;
+  bottom:0;
+  width:1px;
+  background:#cbd9e2;
+}
+
+.timeline-item{
+  position:relative;
+  padding-left:45px;
+  margin-bottom:35px;
+}
+
+.timeline-dot{
+  position:absolute;
+  left:4px;
+  top:7px;
+  width:11px;
+  height:11px;
+  border-radius:50%;
+  background:var(--yellow);
+  border:3px solid var(--bg);
+  box-shadow:0 0 0 1px var(--blue-light);
+}
+
+.timeline-item h3{
+  font-family:"Manrope";
+  font-size:19px;
+  color:var(--blue-dark);
+}
+
+.timeline-item span{
+  font-size:12px;
+  color:var(--blue);
+  font-weight:700;
+}
+
+.timeline-item p{
+  color:var(--muted);
+  font-size:13px;
+  margin-top:6px;
+}
+
+/* ORGANISASI */
+
+.org{
+  background:white;
+}
+
+.org-center{
+  display:flex;
+  justify-content:center;
+  margin-bottom:20px;
+}
+
+.org-card{
+  width:260px;
+  background:white;
+  border:1px solid var(--line);
+  border-radius:16px;
+  padding:22px;
+  text-align:center;
+  box-shadow:0 10px 35px rgba(31,63,88,.06);
+}
+
+.org-card.primary{
+  background:var(--blue);
+  color:white;
+  border-color:var(--blue);
+}
+
+.org-role{
+  font-size:10px;
+  letter-spacing:2px;
+  text-transform:uppercase;
+  font-weight:700;
+  margin-bottom:5px;
+  opacity:.7;
+}
+
+.org-name{
+  font-family:"Manrope";
+  font-size:17px;
+  font-weight:800;
+}
+
+.org-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:20px;
+  max-width:850px;
+  margin:0 auto;
+}
+
+.org-note{
+  text-align:center;
+  margin-top:30px;
+  font-size:12px;
+  color:var(--muted);
+}
+
+/* ACTIVITY */
+
+.activity-grid{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:22px;
+}
+
+.activity{
+  background:white;
+  border:1px solid var(--line);
+  border-radius:20px;
+  overflow:hidden;
+}
+
+.activity-image{
+  height:190px;
+  background:
+    linear-gradient(135deg,rgba(49,93,125,.9),rgba(127,168,201,.55)),
+    repeating-linear-gradient(45deg,transparent 0 10px,rgba(255,255,255,.06) 10px 11px);
+  display:flex;
+  align-items:flex-end;
+  padding:20px;
+  color:white;
+  font-family:"Manrope";
+  font-size:21px;
+}
+
+.activity-body{
+  padding:24px;
+}
+
+.activity-body p{
+  color:var(--muted);
+  font-size:13px;
+}
+
+/* AGENDA */
+
+.agenda{
+  background:var(--blue-dark);
+  color:white;
+}
+
+.agenda .section-title{
+  color:white;
+}
+
+.agenda .section-desc{
+  color:rgba(255,255,255,.65);
+}
+
+.agenda-list{
+  display:grid;
+  gap:1px;
+  background:rgba(255,255,255,.1);
+  border:1px solid rgba(255,255,255,.1);
+}
+
+.agenda-row{
+  display:grid;
+  grid-template-columns:170px 1fr 180px;
+  padding:22px 25px;
+  background:rgba(255,255,255,.035);
+  align-items:center;
+}
+
+.agenda-date{
+  color:var(--yellow);
+  font-weight:700;
+  font-size:13px;
+}
+
+.agenda-title{
+  font-family:"Manrope";
+  font-size:16px;
+}
+
+.agenda-place{
+  color:rgba(255,255,255,.55);
+  font-size:12px;
+  text-align:right;
+}
+
+/* FAQ */
+
+.faq{
+  max-width:850px;
+}
+
+.faq-item{
+  border-bottom:1px solid var(--line);
+}
+
+.faq-question{
+  width:100%;
+  background:none;
+  border:none;
+  padding:20px 0;
+  text-align:left;
+  font-family:"Manrope";
+  font-size:15px;
+  color:var(--blue-dark);
+  cursor:pointer;
+  display:flex;
+  justify-content:space-between;
+}
+
+.faq-answer{
+  display:none;
+  padding:0 0 20px;
+  color:var(--muted);
+  font-size:13px;
+}
+
+.faq-item.active .faq-answer{
+  display:block;
+}
+
+/* CONTACT */
+
+.contact{
+  background:#eef5f9;
+}
+
+.contact-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:25px;
+}
+
+.contact-card{
+  background:white;
+  padding:30px;
+  border-radius:var(--radius);
+  border:1px solid var(--line);
+}
+
+.contact-card h3{
+  font-family:"Manrope";
+  color:var(--blue-dark);
+  margin-bottom:18px;
+}
+
+.contact-row{
+  padding:13px 0;
+  border-bottom:1px solid var(--line);
+}
+
+.contact-row:last-child{
+  border-bottom:none;
+}
+
+.contact-row strong{
+  display:block;
+  color:var(--blue);
+  font-size:11px;
+  letter-spacing:1px;
+  text-transform:uppercase;
+}
+
+.contact-row span{
+  color:var(--muted);
+  font-size:13px;
+}
+
+/* FOOTER */
+
+footer{
+  background:#182f42;
+  color:white;
+  padding:50px 0 25px;
+}
+
+.footer-grid{
+  display:grid;
+  grid-template-columns:1.5fr 1fr 1fr;
+  gap:40px;
+  padding-bottom:35px;
+  border-bottom:1px solid rgba(255,255,255,.1);
+}
+
+.footer-brand{
+  font-family:"Manrope";
+  font-size:25px;
+  font-weight:800;
+}
+
+.footer-grid p{
+  color:rgba(255,255,255,.55);
+  font-size:12px;
+  max-width:400px;
+  margin-top:10px;
+}
+
+.footer-title{
+  font-size:11px;
+  text-transform:uppercase;
+  letter-spacing:2px;
+  color:var(--yellow);
   margin-bottom:12px;
 }
 
-.kegiatan{
-  background:#eaf5ef;
+.footer-links a{
+  display:block;
+  color:rgba(255,255,255,.65);
+  font-size:12px;
+  margin:7px 0;
 }
 
-footer{
-  background:#07502f;
-  color:white;
+.copyright{
+  padding-top:20px;
+  color:rgba(255,255,255,.4);
+  font-size:11px;
   text-align:center;
-  padding:30px;
-  line-height:1.8;
+}
+
+/* WHATSAPP */
+
+.whatsapp{
+  position:fixed;
+  right:22px;
+  bottom:22px;
+  z-index:900;
+  background:#214f3b;
+  color:white;
+  padding:13px 18px;
+  border-radius:9px;
+  font-size:12px;
+  font-weight:700;
+  box-shadow:0 10px 30px rgba(0,0,0,.15);
+}
+
+/* SEARCH */
+
+.search-box{
+  display:flex;
+  gap:10px;
+  max-width:600px;
+  margin-bottom:30px;
+}
+
+.search-box input{
+  flex:1;
+  padding:14px 16px;
+  border:1px solid var(--line);
+  border-radius:9px;
+  outline:none;
+  font-family:inherit;
+  background:white;
+}
+
+.search-box input:focus{
+  border-color:var(--blue-light);
+}
+
+/* REVEAL */
+
+.reveal{
+  opacity:0;
+  transform:translateY(25px);
+  transition:.7s ease;
+}
+
+.reveal.show{
+  opacity:1;
+  transform:none;
+}
+
+/* MOBILE */
+
+@media(max-width:900px){
+
+  .nav-links{
+    position:absolute;
+    top:82px;
+    left:0;
+    width:100%;
+    background:white;
+    display:none;
+    flex-direction:column;
+    align-items:flex-start;
+    padding:25px 5%;
+    box-shadow:0 15px 30px rgba(0,0,0,.08);
+  }
+
+  .nav-links.active{
+    display:flex;
+  }
+
+  .menu{
+    display:block;
+  }
+
+  .hero-grid,
+  .about-grid,
+  .contact-grid{
+    grid-template-columns:1fr;
+  }
+
+  .hero{
+    padding-top:125px;
+    padding-bottom:70px;
+  }
+
+  .hero-grid{
+    gap:45px;
+  }
+
+  .program-grid{
+    grid-template-columns:1fr 1fr;
+  }
+
+  .footer-grid{
+    grid-template-columns:1fr 1fr;
+  }
+
 }
 
 @media(max-width:600px){
-  header{
-    flex-direction:column;
-    gap:12px;
-  }
 
-  nav a{
-    margin:0 6px;
-    font-size:12px;
+  section{
+    padding:75px 0;
   }
 
   .hero h1{
-    font-size:34px;
+    font-size:43px;
+    letter-spacing:-2px;
+  }
+
+  .hero-card{
+    padding:28px;
+  }
+
+  .program-grid,
+  .vm-grid,
+  .activity-grid,
+  .org-grid,
+  .footer-grid{
+    grid-template-columns:1fr;
+  }
+
+  .about-details{
+    grid-template-columns:1fr;
+  }
+
+  .agenda-row{
+    grid-template-columns:1fr;
+    gap:6px;
+  }
+
+  .agenda-place{
+    text-align:left;
+  }
+
+  .whatsapp{
+    right:15px;
+    bottom:15px;
   }
 }
 </style>
@@ -149,63 +947,830 @@ footer{
 
 <body>
 
-<header>
-  <div class="logo">ARBA</div>
+<header id="header">
+  <div class="container navbar">
 
-  <nav>
-    <a href="#beranda">Beranda</a>
-    <a href="#tentang">Tentang</a>
-    <a href="#kegiatan">Kegiatan</a>
-    <a href="#kontak">Kontak</a>
-  </nav>
+    <a href="#beranda" class="brand">
+      ARBA<span>.</span>
+      <small>PEMUDA PERGERAKAN</small>
+    </a>
+
+    <nav class="nav-links" id="navLinks">
+      <a href="#beranda">Beranda</a>
+      <a href="#tentang">Tentang</a>
+      <a href="#program">Program</a>
+      <a href="#kegiatan">Kegiatan</a>
+      <a href="#organisasi">Organisasi</a>
+      <a href="#agenda">Agenda</a>
+      <a href="#kontak" class="nav-button">Kontak</a>
+    </nav>
+
+    <div class="menu" id="menu">≡</div>
+
+  </div>
 </header>
 
+
+<!-- HERO -->
+
 <section class="hero" id="beranda">
-  <div>
-    <h1>Pemuda ARBA</h1>
+  <div class="container hero-grid">
 
-    <p>
-      Bersama membangun pemuda yang aktif, kreatif,
-      solid, dan berkontribusi untuk lingkungan serta masyarakat.
-    </p>
+    <div class="reveal">
+      <div class="eyebrow">Pemuda Pergerakan ARBA</div>
 
-    <a href="#tentang" class="tombol">
-      Kenali ARBA
-    </a>
+      <h1>
+        Bergerak bersama,<br>
+        <span>memberi manfaat.</span>
+      </h1>
+
+      <p>
+        Wadah kepemudaan untuk membangun kebersamaan,
+        kepedulian, kreativitas, dan kontribusi nyata
+        bagi masyarakat Kp. Balemoyan.
+      </p>
+
+      <div class="hero-buttons">
+        <a href="#tentang" class="btn btn-primary">
+          Mengenal ARBA
+        </a>
+
+        <a href="#program" class="btn btn-outline">
+          Lihat Program
+        </a>
+      </div>
+    </div>
+
+
+    <div class="hero-panel reveal">
+
+      <div class="hero-card">
+
+        <div class="hero-card-title">
+          Pemuda Pergerakan ARBA
+        </div>
+
+        <h2>
+          Satu gerakan.<br>
+          Banyak manfaat.
+        </h2>
+
+        <div class="stat-row">
+
+          <div class="stat">
+            <strong>97</strong>
+            <span>Anggota pemuda</span>
+          </div>
+
+          <div class="stat">
+            <strong>2031</strong>
+            <span>Akhir periode kepengurusan</span>
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
   </div>
 </section>
+
+
+<!-- TENTANG -->
 
 <section id="tentang">
-  <h2 class="judul">Tentang ARBA</h2>
 
-  <div class="tentang">
-    <p>
-      Organisasi Pemuda ARBA merupakan wadah bagi para pemuda
-      untuk bersilaturahmi, berorganisasi, mengembangkan potensi,
-      serta ikut berperan dalam berbagai kegiatan positif
-      di lingkungan masyarakat.
-    </p>
+  <div class="container">
+
+    <div class="section-head reveal">
+      <div class="section-label">Tentang ARBA</div>
+      <h2 class="section-title">
+        Ruang bagi pemuda untuk tumbuh dan bergerak.
+      </h2>
+      <p class="section-desc">
+        Pemuda Pergerakan ARBA menjadi ruang bersama bagi
+        pemuda untuk berkontribusi melalui kegiatan sosial,
+        kepemudaan, lingkungan, olahraga, dan pengembangan
+        kreativitas.
+      </p>
+    </div>
+
+
+    <div class="about-grid">
+
+      <div class="about-box reveal">
+        <h3>ARBA</h3>
+
+        <p>
+          Organisasi pemuda yang mengutamakan kebersamaan,
+          kepedulian terhadap lingkungan sekitar, serta
+          keterlibatan aktif pemuda dalam kegiatan masyarakat.
+        </p>
+      </div>
+
+
+      <div class="about-text reveal">
+
+        <p>
+          ARBA hadir sebagai wadah yang terbuka bagi pemuda
+          untuk menyampaikan gagasan, ikut mengambil peran,
+          dan membangun kegiatan yang memiliki manfaat nyata.
+        </p>
+
+        <p>
+          Setiap kegiatan diarahkan agar dapat dilaksanakan
+          secara sederhana, terukur, bertanggung jawab,
+          dan dapat dievaluasi bersama.
+        </p>
+
+        <div class="about-details">
+
+          <div class="detail">
+            <strong>Wilayah</strong>
+            <span>Kp. Balemoyan, Desa Sukamurni, RW 08</span>
+          </div>
+
+          <div class="detail">
+            <strong>Anggota</strong>
+            <span>97 pemuda</span>
+          </div>
+
+          <div class="detail">
+            <strong>Periode</strong>
+            <span>5 Oktober 2026 – 4 Oktober 2031</span>
+          </div>
+
+          <div class="detail">
+            <strong>Pembina</strong>
+            <span>Ust. Asep Saepuloh</span>
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
   </div>
+
 </section>
 
-<section class="kegiatan" id="kegiatan">
-  <h2 class="judul">Kegiatan ARBA</h2>
 
-  <div class="cards">
+<!-- VISI MISI -->
 
-    <div class="card">
-      <h3>🤝 Sosial</h3>
-      <p>
-        Kegiatan sosial dan kepedulian terhadap masyarakat.
+<section class="blue-section">
+
+  <div class="container">
+
+    <div class="section-head reveal">
+      <div class="section-label">Arah Organisasi</div>
+      <h2 class="section-title">Visi dan Misi</h2>
+    </div>
+
+    <div class="vm-grid">
+
+      <div class="vm-card reveal">
+
+        <h3>Visi</h3>
+
+        <p>
+          Membangun pemuda yang aktif bergerak, peduli,
+          dan memberi manfaat nyata bagi masyarakat.
+        </p>
+
+      </div>
+
+
+      <div class="vm-card reveal">
+
+        <h3>Misi</h3>
+
+        <ol>
+          <li>Mengajak pemuda ikut berkontribusi dalam kegiatan.</li>
+          <li>Membangun kepedulian terhadap warga dan lingkungan.</li>
+          <li>Membuat program yang sederhana, nyata, dan berjalan.</li>
+          <li>Membuka ruang bagi seluruh pemuda untuk terlibat.</li>
+          <li>Menjalankan organisasi dengan tanggung jawab dan evaluasi.</li>
+        </ol>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- PROGRAM -->
+
+<section id="program">
+
+  <div class="container">
+
+    <div class="section-head reveal">
+      <div class="section-label">Program</div>
+      <h2 class="section-title">
+        Program kerja yang terarah dan berkelanjutan.
+      </h2>
+      <p class="section-desc">
+        Program disusun berdasarkan kebutuhan pemuda,
+        masyarakat, lingkungan, serta pengembangan kegiatan
+        bersama.
       </p>
     </div>
 
-    <div class="card">
-      <h3>⚽ Olahraga</h3>
-      <p>
-        Membangun kebersamaan melalui kegiatan olahraga.
+
+    <div class="program-grid">
+
+      <div class="program-card reveal">
+        <div class="program-number">01</div>
+        <h3>Pemuda Aktif</h3>
+        <p>
+          Gotong royong, olahraga, kegiatan sosial,
+          kepemudaan, dan kreativitas.
+        </p>
+      </div>
+
+      <div class="program-card reveal">
+        <div class="program-number">02</div>
+        <h3>Pemuda Peduli</h3>
+        <p>
+          Kepedulian kepada warga yang sakit, mengalami
+          musibah, serta kegiatan sosial dan lingkungan.
+        </p>
+      </div>
+
+      <div class="program-card reveal">
+        <div class="program-number">03</div>
+        <h3>Pengembangan Pemuda</h3>
+        <p>
+          Olahraga, diskusi, kreativitas, pelatihan,
+          keagamaan, dan kegiatan sosial.
+        </p>
+      </div>
+
+      <div class="program-card reveal">
+        <div class="program-number">04</div>
+        <h3>Semarak Kemerdekaan</h3>
+        <p>
+          Lomba anak dan pemuda, olahraga, hiburan,
+          serta kegiatan kebersamaan masyarakat.
+        </p>
+      </div>
+
+      <div class="program-card reveal">
+        <div class="program-number">05</div>
+        <h3>Bakti Sosial</h3>
+        <p>
+          Kegiatan sosial masyarakat yang dilaksanakan
+          minimal dua kali dalam satu periode.
+        </p>
+      </div>
+
+      <div class="program-card reveal">
+        <div class="program-number">06</div>
+        <h3>Rapat & Evaluasi</h3>
+        <p>
+          Evaluasi kegiatan, kendala, keuangan,
+          keaktifan anggota, dan rencana kegiatan.
+        </p>
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- TIMELINE -->
+
+<section class="blue-section">
+
+  <div class="container">
+
+    <div class="section-head reveal">
+      <div class="section-label">Kegiatan Rutin</div>
+      <h2 class="section-title">Ritme kegiatan ARBA.</h2>
+    </div>
+
+    <div class="timeline">
+
+      <div class="timeline-item reveal">
+        <div class="timeline-dot"></div>
+        <span>SETIAP JUMAT</span>
+        <h3>Jumsih & Gotong Royong</h3>
+        <p>
+          07.00 – 09.00. Kegiatan kebersihan dan gotong royong
+          lingkungan.
+        </p>
+      </div>
+
+      <div class="timeline-item reveal">
+        <div class="timeline-dot"></div>
+        <span>SETIAP SABTU</span>
+        <h3>Diskusi Pemuda & Kajian</h3>
+        <p>
+          18.30 – 21.00. Ruang diskusi dan kegiatan pembinaan pemuda.
+        </p>
+      </div>
+
+      <div class="timeline-item reveal">
+        <div class="timeline-dot"></div>
+        <span>MINGGU KE-4</span>
+        <h3>Evaluasi Bulanan</h3>
+        <p>
+          18.30 – 21.00. Evaluasi kegiatan, keaktifan,
+          kendala, dan rencana berikutnya.
+        </p>
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- KEGIATAN -->
+
+<section id="kegiatan">
+
+  <div class="container">
+
+    <div class="section-head reveal">
+      <div class="section-label">Dokumentasi</div>
+      <h2 class="section-title">
+        Kegiatan yang menjadi bagian dari perjalanan ARBA.
+      </h2>
+    </div>
+
+
+    <div class="activity-grid">
+
+      <article class="activity reveal">
+        <div class="activity-image">
+          Gotong Royong
+        </div>
+        <div class="activity-body">
+          <p>
+            Membangun kebersamaan melalui kegiatan lingkungan
+            dan gotong royong bersama.
+          </p>
+        </div>
+      </article>
+
+
+      <article class="activity reveal">
+        <div class="activity-image">
+          Kegiatan Pemuda
+        </div>
+        <div class="activity-body">
+          <p>
+            Kegiatan olahraga, diskusi, kreativitas,
+            dan pengembangan potensi pemuda.
+          </p>
+        </div>
+      </article>
+
+
+      <article class="activity reveal">
+        <div class="activity-image">
+          Kegiatan Sosial
+        </div>
+        <div class="activity-body">
+          <p>
+            Kepedulian dan bantuan kepada masyarakat
+            dalam berbagai kondisi.
+          </p>
+        </div>
+      </article>
+
+
+      <article class="activity reveal">
+        <div class="activity-image">
+          Semarak Kemerdekaan
+        </div>
+        <div class="activity-body">
+          <p>
+            Membangun kebersamaan masyarakat melalui
+            kegiatan peringatan kemerdekaan.
+          </p>
+        </div>
+      </article>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- ORGANISASI -->
+
+<section class="org" id="organisasi">
+
+  <div class="container">
+
+    <div class="section-head reveal">
+      <div class="section-label">Organisasi</div>
+      <h2 class="section-title">Struktur kepengurusan ARBA.</h2>
+      <p class="section-desc">
+        Susunan pengurus Pemuda Pergerakan ARBA periode
+        2026–2031.
       </p>
     </div>
 
-    <div class="card">
-      <h3>🌱 Ling
+
+    <div class="org-center reveal">
+
+      <div class="org-card">
+        <div class="org-role">Pembina</div>
+        <div class="org-name">Ust. Asep Saepuloh</div>
+      </div>
+
+    </div>
+
+
+    <div class="org-center reveal">
+
+      <div class="org-card primary">
+        <div class="org-role">Ketua</div>
+        <div class="org-name">Firmansyah</div>
+      </div>
+
+    </div>
+
+
+    <div class="org-grid">
+
+      <div class="org-card reveal">
+        <div class="org-role">Wakil Ketua</div>
+        <div class="org-name">Yasir Ahmad</div>
+      </div>
+
+      <div class="org-card reveal">
+        <div class="org-role">Sekretaris 1</div>
+        <div class="org-name">Muhammad Rizal</div>
+      </div>
+
+      <div class="org-card reveal">
+        <div class="org-role">Sekretaris 2</div>
+        <div class="org-name">Gumelar Ramdani</div>
+      </div>
+
+      <div class="org-card reveal">
+        <div class="org-role">Bendahara</div>
+        <div class="org-name">Asep Somantri</div>
+      </div>
+
+    </div>
+
+
+    <div class="org-note">
+      Periode kepengurusan: 5 Oktober 2026 – 4 Oktober 2031
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- AGENDA -->
+
+<section class="agenda" id="agenda">
+
+  <div class="container">
+
+    <div class="section-head reveal">
+      <div class="section-label">Agenda</div>
+      <h2 class="section-title">Agenda kegiatan.</h2>
+      <p class="section-desc">
+        Jadwal rutin yang menjadi bagian dari aktivitas
+        organisasi.
+      </p>
+    </div>
+
+
+    <div class="agenda-list reveal">
+
+      <div class="agenda-row">
+        <div class="agenda-date">SETIAP JUMAT</div>
+        <div class="agenda-title">Jumsih & Gotong Royong</div>
+        <div class="agenda-place">07.00 – 09.00</div>
+      </div>
+
+      <div class="agenda-row">
+        <div class="agenda-date">SETIAP SABTU</div>
+        <div class="agenda-title">Diskusi Pemuda & Kajian</div>
+        <div class="agenda-place">18.30 – 21.00</div>
+      </div>
+
+      <div class="agenda-row">
+        <div class="agenda-date">MINGGU KE-4</div>
+        <div class="agenda-title">Rapat & Evaluasi Bulanan</div>
+        <div class="agenda-place">18.30 – 21.00</div>
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- FAQ -->
+
+<section>
+
+  <div class="container">
+
+    <div class="section-head reveal">
+      <div class="section-label">Informasi</div>
+      <h2 class="section-title">Pertanyaan umum.</h2>
+    </div>
+
+
+    <div class="faq">
+
+      <div class="faq-item reveal">
+        <button class="faq-question">
+          Apa itu Pemuda Pergerakan ARBA?
+          <span>+</span>
+        </button>
+        <div class="faq-answer">
+          ARBA merupakan wadah kepemudaan di Kp. Balemoyan,
+          Desa Sukamurni, RW 08 untuk kegiatan sosial,
+          lingkungan, kepemudaan, olahraga, dan pengembangan
+          kreativitas.
+        </div>
+      </div>
+
+
+      <div class="faq-item reveal">
+        <button class="faq-question">
+          Berapa jumlah anggota ARBA?
+          <span>+</span>
+        </button>
+        <div class="faq-answer">
+          Saat ini terdapat 97 anggota pemuda.
+        </div>
+      </div>
+
+
+      <div class="faq-item reveal">
+        <button class="faq-question">
+          Apa saja kegiatan rutin ARBA?
+          <span>+</span>
+        </button>
+        <div class="faq-answer">
+          Kegiatan rutin meliputi Jumsih dan gotong royong,
+          diskusi pemuda dan kajian, serta evaluasi bulanan.
+        </div>
+      </div>
+
+
+      <div class="faq-item reveal">
+        <button class="faq-question">
+          Bagaimana cara menghubungi ARBA?
+          <span>+</span>
+        </button>
+        <div class="faq-answer">
+          Hubungi kontak resmi ARBA melalui WhatsApp pada
+          tombol kontak yang tersedia di halaman ini.
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- KONTAK -->
+
+<section class="contact" id="kontak">
+
+  <div class="container">
+
+    <div class="section-head reveal">
+      <div class="section-label">Kontak</div>
+      <h2 class="section-title">Terhubung dengan ARBA.</h2>
+      <p class="section-desc">
+        Untuk informasi kegiatan dan koordinasi,
+        silakan menghubungi kontak resmi.
+      </p>
+    </div>
+
+
+    <div class="contact-grid">
+
+      <div class="contact-card reveal">
+
+        <h3>Informasi Organisasi</h3>
+
+        <div class="contact-row">
+          <strong>Nama</strong>
+          <span>Pemuda Pergerakan ARBA</span>
+        </div>
+
+        <div class="contact-row">
+          <strong>Alamat</strong>
+          <span>Kp. Balemoyan, Desa Sukamurni, RW 08</span>
+        </div>
+
+        <div class="contact-row">
+          <strong>Jumlah Anggota</strong>
+          <span>97 pemuda</span>
+        </div>
+
+        <div class="contact-row">
+          <strong>Periode</strong>
+          <span>2026 – 2031</span>
+        </div>
+
+      </div>
+
+
+      <div class="contact-card reveal">
+
+        <h3>Hubungi Kami</h3>
+
+        <div class="contact-row">
+          <strong>WhatsApp</strong>
+          <span>0851 5059 1968</span>
+        </div>
+
+        <div style="margin-top:25px;">
+          <a
+            href="https://wa.me/6285150591968"
+            target="_blank"
+            class="btn btn-primary">
+            Hubungi melalui WhatsApp
+          </a>
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- FOOTER -->
+
+<footer>
+
+  <div class="container">
+
+    <div class="footer-grid">
+
+      <div>
+        <div class="footer-brand">
+          ARBA.
+        </div>
+
+        <p>
+          Pemuda Pergerakan ARBA —
+          bergerak bersama untuk memberi manfaat
+          bagi masyarakat.
+        </p>
+      </div>
+
+
+      <div>
+
+        <div class="footer-title">
+          Navigasi
+        </div>
+
+        <div class="footer-links">
+          <a href="#tentang">Tentang ARBA</a>
+          <a href="#program">Program</a>
+          <a href="#kegiatan">Kegiatan</a>
+          <a href="#organisasi">Organisasi</a>
+        </div>
+
+      </div>
+
+
+      <div>
+
+        <div class="footer-title">
+          Lokasi
+        </div>
+
+        <p>
+          Kp. Balemoyan<br>
+          Desa Sukamurni, RW 08
+        </p>
+
+      </div>
+
+    </div>
+
+
+    <div class="copyright">
+      © 2026 Pemuda Pergerakan ARBA. Seluruh hak cipta dilindungi.
+    </div>
+
+  </div>
+
+</footer>
+
+
+<a
+  class="whatsapp"
+  href="https://wa.me/6285150591968"
+  target="_blank">
+  WhatsApp ARBA
+</a>
+
+
+<script>
+
+/* HEADER */
+
+const header = document.getElementById("header");
+
+window.addEventListener("scroll", () => {
+  if(window.scrollY > 30){
+    header.classList.add("scrolled");
+  }else{
+    header.classList.remove("scrolled");
+  }
+});
+
+
+/* MOBILE MENU */
+
+const menu = document.getElementById("menu");
+const navLinks = document.getElementById("navLinks");
+
+menu.addEventListener("click", () => {
+  navLinks.classList.toggle("active");
+});
+
+document.querySelectorAll(".nav-links a").forEach(link => {
+  link.addEventListener("click", () => {
+    navLinks.classList.remove("active");
+  });
+});
+
+
+/* FAQ */
+
+document.querySelectorAll(".faq-question").forEach(button => {
+
+  button.addEventListener("click", () => {
+
+    const item = button.parentElement;
+    const active = item.classList.contains("active");
+
+    document.querySelectorAll(".faq-item").forEach(i => {
+      i.classList.remove("active");
+      i.querySelector(".faq-question span").textContent = "+";
+    });
+
+    if(!active){
+      item.classList.add("active");
+      button.querySelector("span").textContent = "−";
+    }
+
+  });
+
+});
+
+
+/* SCROLL REVEAL */
+
+const observer = new IntersectionObserver(
+  entries => {
+
+    entries.forEach(entry => {
+
+      if(entry.isIntersecting){
+        entry.target.classList.add("show");
+      }
+
+    });
+
+  },
+  {
+    threshold:.12
+  }
+);
+
+document.querySelectorAll(".reveal").forEach(el => {
+  observer.observe(el);
+});
+
+</script>
+
+</body>
+</html>
