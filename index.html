@@ -942,6 +942,94 @@ footer{
     bottom:15px;
   }
 }
+  /* ===== GALERI JUMSIH ARBA ===== */
+
+.jumsih-gallery {
+  margin-top: 35px;
+}
+
+.jumsih-gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+}
+
+.jumsih-gallery-item {
+  background: #fff;
+  border: 1px solid #e2e8ed;
+  border-radius: 14px;
+  overflow: hidden;
+  transition: .3s ease;
+}
+
+.jumsih-gallery-item:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 15px 35px rgba(35, 75, 100, .12);
+}
+
+.jumsih-gallery-item img {
+  width: 100%;
+  height: 230px;
+  object-fit: cover;
+  display: block;
+  cursor: pointer;
+}
+
+.jumsih-gallery-info {
+  padding: 16px 18px;
+}
+
+.jumsih-gallery-info small {
+  color: #315d7d;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+}
+
+.jumsih-gallery-info h3 {
+  margin-top: 5px;
+  color: #243746;
+  font-size: 16px;
+}
+
+.jumsih-gallery-info p {
+  margin-top: 4px;
+  color: #71808c;
+  font-size: 12px;
+}
+
+.jumsih-gallery-item:first-child {
+  grid-column: span 2;
+}
+
+.jumsih-gallery-item:first-child img {
+  height: 310px;
+}
+
+@media (max-width: 800px) {
+  .jumsih-gallery-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .jumsih-gallery-item:first-child {
+    grid-column: span 2;
+  }
+}
+
+@media (max-width: 550px) {
+  .jumsih-gallery-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .jumsih-gallery-item:first-child {
+    grid-column: span 1;
+  }
+
+  .jumsih-gallery-item img,
+  .jumsih-gallery-item:first-child img {
+    height: 250px;
+  }
+}
 </style>
 </head>
 
